@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leezyo Art - 创意抽象设计作品</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background: #B388EB;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #6200EA;
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: #165DFF;
+            text-align: center;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            width: 80px;
+            height: 60px;
+            margin-right: 8px;
+            background: url('https://via.placeholder.com/80x60/165DFF/B388EB?text=Leezyo') center/contain no-repeat;
+        }
+        .logo-text {
+            font-size: 16px;
+            color: #165DFF;
+            font-weight: 300;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-link {
+            font-size: 14px;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #B388EB;
+        }
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+        }
+
+        /* 首页Banner */
+        .banner {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #E8F3FF 0%, #f5f3ff 100%);
+            margin-top: 76px;
+        }
+        .banner-content {
+            text-align: center;
+            max-width: 800px;
+        }
+        .banner-title {
+            font-size: 48px;
+            font-weight: 200;
+            color: #165DFF;
+            margin-bottom: 20px;
+        }
+        .banner-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* 作品展示 */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .work-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .work-card:hover {
+            transform: translateY(-5px);
+        }
+        .work-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        .work-watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 80px;
+            height: 60px;
+            opacity: 0.5;
+            background: url('https://via.placeholder.com/80x60/6200EA/ffffff?text=Lz') center/contain no-repeat;
+            transform: rotate(15deg);
+        }
+        .work-info {
+            padding: 20px;
+        }
+        .work-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #165DFF;
+        }
+        .work-desc {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 服务模块 */
+        .services {
+            background-color: #f9f9f9;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: #E8F3FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #165DFF;
+            font-size: 24px;
+        }
+        .service-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #165DFF;
+        }
+        .service-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #165DFF;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-logo {
+            width: 60px;
+            height: 40px;
+            margin: 0 auto 20px;
+            background: url('https://via.placeholder.com/60x40/ffffff/B388EB?text=Lz') center/contain no-repeat;
+        }
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        .footer-url {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .banner-title {
+                font-size: 36px;
+            }
+            .logo-img {
+                width: 40px;
+                height: 30px;
+            }
+            .logo-text {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href=" " class="logo">
+                <div class="logo-img"></div>
+                <span class="logo-text">Leezyo Art</span>
+            </a >
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a ></li>
+                <li><a href="#works" class="nav-link">作品</a ></li>
+                <li><a href="#services" class="nav-link">服务</a ></li>
+                <li><a href="#contact" class="nav-link">联系</a ></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- 首页Banner -->
+    <section id="home" class="banner">
+        <div class="container banner-content">
+            <h1 class="banner-title">抽象创意 · 视觉表达</h1>
+            <p class="banner-subtitle">专注抽象设计作品展示与创意指导，用色彩与线条诠释无限可能</p >
+            <button onclick="location.href='#works'">查看作品</button>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section id="works" class="section">
+        <div class="container">
+            <h2 class="section-title">精选作品</h2>
+            <div class="works-grid">
+                <!-- 作品1 -->
+                <div class="work-card">
+                    < img src="https://via.placeholder.com/300x250/E8F3FF/165DFF?text=Abstract+Work+1" alt="抽象作品1" class="work-img">
+                    <div class="work-watermark"></div>
+                    <div class="work-info">
+                        <h3 class="work-title">色彩流动</h3>
+                        <p class="work-desc">以蓝紫渐变为主调，呈现动态视觉流动感，适配空间装饰场景</p >
+                    </div>
+                </div>
+                <!-- 作品2 -->
+                <div class="work-card">
+                    < img src="https://via.placeholder.com/300x250/f5f3ff/B388EB?text=Abstract+Work+2" alt="抽象作品2" class="work-img">
+                    <div class="work-watermark"></div>
+                    <div class="work-info">
+                        <h3 class="work-title">几何韵律</h3>
+                        <p class="work-desc">极简几何线条组合，通过比例与间距营造秩序美感，适用于品牌视觉</p >
+                    </div>
+                </div>
+                <!-- 作品3 -->
+                <div class="work-card">
+                    < img src="https://via.placeholder.com/300x250/fff5f5/6200EA?text=Abstract+Work+3" alt="抽象作品3" class="work-img">
+                    <div class="work-watermark"></div>
+                    <div class="work-info">
+                        <h3 class="work-title">虚实边界</h3>
+                        <p class="work-desc">半透明叠加效果，探索虚实之间的视觉平衡，适配数字媒体展示</p >
+                    </div>
+                </div>
+                <!-- 作品4 -->
+                <div class="work-card">
+                    < img src="https://via.placeholder.com/300x250/f0f8ff/165DFF?text=Abstract+Work+4" alt="抽象作品4" class="work-img">
+                    <div class="work-watermark"></div>
+                    <div class="work-info">
+                        <h3 class="work-title">光影交织</h3>
+                        <p class="work-desc">利用明暗对比构建空间层次，适合高端场所装饰与视觉设计项目</p >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务模块 -->
+    <section id="services" class="services section">
+        <div class="container">
+            <h2 class="section-title">创意服务</h2>
+            <div class="services-grid">
+                <!-- 服务1 -->
+                <div class="service-card">
+                    <div class="service-icon">✏️</div>
+                    <h3 class="service-title">设计指导</h3>
+                    <p class="service-desc">一对一抽象设计思路指导，从概念到落地全流程专业建议</p >
+                    <button>预约咨询</button>
+                </div>
+                <!-- 服务2 -->
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">作品定制</h3>
+                    <p class="service-desc">根据需求定制专属抽象设计作品，适配空间、品牌等多元场景</p >
+                    <button>定制方案</button>
+                </div>
+                <!-- 服务3 -->
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">方案优化</h3>
+                    <p class="service-desc">现有抽象设计作品优化升级，提升视觉质感与专业表现力</p >
+                    <button>了解详情</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-logo"></div>
+            <p class="footer-text">© 2024 Leezyo Art | 创意抽象设计工作室</p >
+            <p class="footer-url">网址：Leezyo-art-s.github.io</p >
+            <p class="footer-text" style="margin-top: 10px;">邮箱：contact@leezyo-art.com | 电话：123-4567-8910</p >
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // 移动端菜单关闭
+                if (window.innerWidth <= 768) {
+                    navMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
